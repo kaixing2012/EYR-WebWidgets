@@ -1,77 +1,63 @@
-// const modalFrame = document.querySelector(`.modal-header`)
+let model = document.getElementById("modal")
+let header = document.getElementById(model.id + "header")
+let newx = 0, newy = 0, prevx = 0, prevy = 0;
 
-// modalFrame.addEventListener(`mousedown`, (event) => {
-//     event.preventDefault();
+header.addEventListener('mousedown', (e) => {
+    e = e || window.event;
+    e.preventDefault();
 
-//     let prevX = event.clientX;
-//     let prevY = event.clientY;
+    prevx = e.clientX;
+    prevy = e.clientY;
 
-//     window.addEventListener(`mousemove`, mousemove)
-//     window.addEventListener(`mouseup`, mouseup)
+    window.onmousemove = elementDrag;
+    window.onmouseup = closeDragElement;
+})
 
-//     function mousemove(event) {
-//         event.preventDefault();
-//         let newX = prevX - event.clientX;
-//         let newY = prevY - event.clientY;
+function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
 
-//         const rect = modalFrame.getBoundingClientRect();
+    newx = prevx - e.clientX;
+    newy = prevy - e.clientY;
+    prevx = e.clientX;
+    prevy = e.clientY;
 
-//         modalFrame.style.top = `${rect.top - newY}px`;
-//         modalFrame.style.left = `${rect.left - newX}px`;
-
-//         prevX = event.clientX;
-//         prevY = event.clientY;
-//     }
-
-//     function mouseup() {
-//         window.removeEventListener(`mousemove`, mousemove);
-//         window.removeEventListener(`mouseup`, mouseup)
-//     }
-
-// })
-
-// Make the DIV element draggable:
-dragElement(document.getElementById("mydiv"));
-
-function dragElement(elmnt) {
-    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-
-    if (document.getElementById(elmnt.id + "header")) {
-        // if present, the header is where you move the DIV from:
-        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-    } else {
-        // otherwise, move the DIV from anywhere inside the DIV:
-        elmnt.onmousedown = dragMouseDown;
-    }
-
-    function dragMouseDown(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // get the mouse cursor position at startup:
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        window.onmouseup = closeDragElement;
-        // call a function whenever the cursor moves:
-        window.onmousemove = elementDrag;
-    }
-
-    function elementDrag(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // calculate the new cursor position:
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-
-        // set the element's new position:
-        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-    }
-
-    function closeDragElement() {
-        // stop moving when mouse button is released:
-        window.onmouseup = null;
-        window.onmousemove = null;
-    }
+    model.style.top = (model.offsetTop - newy) + "px";
+    model.style.left = (model.offsetLeft - newx) + "px";
 }
+
+function closeDragElement() {
+    window.onmouseup = null;
+    window.onmousemove = null;
+}
+
+
+let trigger = document.getElementById(model.id + "trigger")
+let content = document.getElementById(model.id + "content")
+let active = false;
+
+trigger.addEventListener('click', () => {
+    content.animate(
+        [
+            {
+                height: '0',
+                width: '0',
+            },
+            {
+                height: '0%',
+                width: '100%',
+            },
+            {
+                height: '100%',
+                maxHeight: '320px',
+                width: '100%',
+            }
+        ],
+        {
+            duration: 1000,
+            fill: `forwards`,
+        }
+    )
+    active = !active
+})
+

@@ -1,8 +1,9 @@
 let mainBtn = document.querySelector(`.btn-spin-wheel`)
+let active = false;
 
 mainBtn.addEventListener(`click`, () => {
 
-    if (mainBtn.classList.contains(`active`)) {
+    if (active) {
         mainBtn.classList.remove("active");
         mainBtn.firstElementChild.style.transform = `rotate(-90deg)`;
     } else {
@@ -10,14 +11,14 @@ mainBtn.addEventListener(`click`, () => {
         mainBtn.firstElementChild.style.transform = `rotate(90deg)`;
     }
 
-    mainBtn.firstElementChild.style.transitionDuration = `0.3s`;
+    mainBtn.firstElementChild.style.transitionDuration = `0.2s`;
 
     let orbitBtns = document.querySelectorAll(`.btn-orbit`);
     let toDegree = 225;
     let iconRotateDegree = 135;
 
     orbitBtns.forEach((item, index) => {
-        if (item.classList.contains(`d-none`)) {
+        if (!active) {
             item.classList.remove(`d-none`)
             item.firstElementChild.style.transform = `rotate(${iconRotateDegree}deg)`
 
@@ -31,7 +32,7 @@ mainBtn.addEventListener(`click`, () => {
                     }
                 ],
                 {
-                    duration: 300,
+                    duration: 200,
                     fill: `forwards`,
                 }
             )
@@ -50,7 +51,7 @@ mainBtn.addEventListener(`click`, () => {
                     }
                 ],
                 {
-                    duration: 300,
+                    duration: 200,
                     fill: `forwards`,
                 }
             )
@@ -59,4 +60,5 @@ mainBtn.addEventListener(`click`, () => {
         toDegree += 45;
         iconRotateDegree -= 45;
     });
+    active = !active
 });
