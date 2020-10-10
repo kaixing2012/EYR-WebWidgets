@@ -1,5 +1,5 @@
-let model = document.getElementById("modal")
-let header = document.getElementById(model.id + "header")
+let modal = document.getElementById("modal")
+let header = document.getElementById(modal.id + "header")
 let newx = 0, newy = 0, prevx = 0, prevy = 0;
 
 header.addEventListener('mousedown', (e) => {
@@ -22,8 +22,8 @@ function elementDrag(e) {
     prevx = e.clientX;
     prevy = e.clientY;
 
-    model.style.top = (model.offsetTop - newy) + "px";
-    model.style.left = (model.offsetLeft - newx) + "px";
+    modal.style.top = (modal.offsetTop - newy) + "px";
+    modal.style.left = (modal.offsetLeft - newx) + "px";
 }
 
 function closeDragElement() {
@@ -32,8 +32,8 @@ function closeDragElement() {
 }
 
 
-let trigger = document.getElementById(model.id + "trigger")
-let content = document.getElementById(model.id + "content")
+let trigger = document.getElementById(modal.id + "trigger")
+let content = document.getElementById(modal.id + "content")
 let active = false;
 
 trigger.addEventListener('click', () => {
