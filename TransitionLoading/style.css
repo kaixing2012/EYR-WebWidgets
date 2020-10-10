@@ -1,0 +1,144 @@
+html {
+    height: 100%;
+}
+
+body {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: black;
+}
+
+.loading-circle-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 400px;
+    width: 400px;
+    transform: translate(-50%, -50%);
+}
+
+.loading-circle-position {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+.loading-circle1 {
+    width: 100%; 
+    height: 100%;  
+    border: solid 5px;
+    border-color:  #00e0e0  transparent #00e0e0 transparent;
+    border-radius: 50%;
+    animation: ciranime1 4s infinite;
+}
+
+.loading-circle1-wrapper {
+    width: 100%; 
+    height: 100%;  
+}
+
+@keyframes ciranime1{
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(-180deg);
+    }
+}
+
+.loading-circle2 {
+    width: 100%; 
+    height: 100%;  
+    border: solid 5px;
+    border-color: transparent #00e0e0  transparent #00e0e0;
+    border-radius: 50%;
+    animation: ciranime2 4s infinite;
+}
+
+.loading-circle2-wrapper {
+    width: 70%; 
+    height: 70%;  
+}
+
+@keyframes ciranime2{
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(-180deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+.loading-circle3 {
+    width: 100%; 
+    height: 100%;  
+    animation: ciranime3 6s infinite;
+}
+
+.loading-circle3-wrapper {
+    width: 70%; 
+    height: 70%;  
+}
+
+@keyframes ciranime3{
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(720deg);
+    }
+    100% {
+        transform: rotate(1440deg);
+    }
+}
+
+.yin-yang {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    height: 48px;
+    width: 96px;
+    box-sizing: content-box;
+    background: #00e0e0;
+    border-color: black;
+    border-style: solid;
+    border-width: 2px 2px 50px 2px;
+    border-radius: 100%;
+    transform: translate(-50%, -50%) scale(1.5);
+}
+.yin-yang:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 12px;
+    width: 12px;
+    background: #00e0e0;
+    border: 18px solid black;
+    border-radius: 100%;
+    box-sizing: content-box;
+}
+.yin-yang:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 12px;
+    width: 12px;
+    background: black;
+    border: 18px solid #00e0e0;
+    border-radius: 100%;
+    box-sizing: content-box;
+}
