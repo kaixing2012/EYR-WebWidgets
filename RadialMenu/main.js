@@ -11,7 +11,7 @@ mainBtn.addEventListener(`click`, () => {
         mainBtn.firstElementChild.style.transform = `scale(1) rotate(-360deg)`;
     }
 
-    mainBtn.firstElementChild.style.transitionDuration = `0.3s`;
+    mainBtn.firstElementChild.style.transitionDuration = `0.6s`;
 
     let outPaths = document.querySelectorAll(`.btn-path`);
 
@@ -22,7 +22,7 @@ mainBtn.addEventListener(`click`, () => {
 
         if (!active) {
             setTimeout(() => {
-                item.firstElementChild.style.transition = `all 200ms cubic-bezier(0.680, -0.550, 0.265, 1.550)`;
+                item.firstElementChild.style.transition = `all 500ms cubic-bezier(1, -1, 0, 2)`;
                 item.firstElementChild.style.transform = `translate(120%, -50%)`
             }, 100);
             item.firstElementChild.classList.remove(`d-none`)
@@ -31,7 +31,7 @@ mainBtn.addEventListener(`click`, () => {
         } else {
             setTimeout(() => {
                 item.firstElementChild.classList.add(`d-none`)
-            }, 300);
+            }, 600);
             item.firstElementChild.style.transform = `translate(-50%, -50%)`
         }
 
